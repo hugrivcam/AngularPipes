@@ -1,0 +1,46 @@
+<p-panel class = "p-2 border-round" header = "Pipes Basicos" [showHeader]="true" [style]="{'background-color': 'aqua'} ">
+  <!-- <h1>Pipes básicos</h1> -->
+  <div class = "border-double p-2" style="background-color: rgb(36, 69, 53)">
+        <p>Pipes numéricos incluidos en Angular - Usualmente en el common module</p>
+        <p>formato en pipe number: [minIntegerDigits].[minFractionDigits]-[maxFractionDigits]</p>
+  </div>
+</p-panel>
+
+<div class = "grid mt-2">
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(59, 105, 65)'}" header = "Números" subheader="________________">
+            <!-- Texto original: <span style="color : aqua">{{this.nameLower}}</span> Nombre con Pipe: <span style="color: yellowgreen;font-size :20px">{{this.nameLower | uppercase}}</span> -->
+            <ul>
+                <li>Numero original: <span style="color : aqua">{{this.totalSells + 1333}}</span>&nbsp;&nbsp;&nbsp;&nbsp;Sin Pipe</li>
+                <li>| number: <span style="color : rgb(136, 255, 0)"> {{this.totalSells +1333 | number}} </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Con redondeo, 3 decimales por defecto</li>
+                <li>| number:'1.0-2'&nbsp;&nbsp;<span style="color : rgb(136, 255, 0)">{{this.totalSells+1333 | number:'1.0-2'}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Con 2 decimales máximo y aplica redondeo</li> 
+            </ul>
+        </p-card>
+    </div>
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(29, 80, 23)'}" header = "Moneda"subheader="______________">
+            <ul>
+                <li>Numero original: <span style="color : aqua">{{this.totalSells+ 0.134}}</span></li>
+                <li>| currency > <span style="color : rgb(14, 234, 83)">{{this.totalSells +0.134 | currency}}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color : rgb(90, 105, 95)">Ojo con el redondeo</span></li>
+                <li>| currency:'EUR' tambien vale '€ o $' >  <span style="color : rgb(229, 255, 0)">{{this.totalSells +0.134 | currency:'EUR'}}</span>  </li>
+                <li>| currency:'EUR':'symbol-narrow':'1.4-6' > <span style="color : rgb(232, 85, 23)">{{this.totalSells +0.134 | currency:'EUR':'symbol-narrow':'1.4-6'}} </span>&nbsp;&nbsp;&nbsp;&nbsp;hasta 6 decimales </li>
+                 
+            </ul>
+            <!-- Texto original: <span style="color : aqua">{{this.nameUpper}}</span> Nombre con Pipe: <span style="color: yellowgreen;font-size :20px">{{this.nameUpper| lowercase}}</span> -->
+        </p-card>
+    </div>
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(29, 80, 23)'}" header = "Porcentajes">
+            <ul>
+                <li>Original: <span style="color : rgb(232, 85, 23)">{{this.percent}}</span></li>
+                <li>| percent:'1.2-2' <span style="color : rgb(255, 174, 0)"> {{this.percent | percent:'1.2-2'}}</span></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <!-- Numero original: {{this.totalSells}} <span style="color : rgb(191, 202, 34)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| currency -- {{this.totalSells | currency}} </span> <span style="color : rgb(255, 0, 153)"> | currency:'€' -- </span> <span style="color : rgb(255, 0, 225)">{{this.totalSells | currency:'EUR'}}</span>   -->
+            <!-- <span style="color : rgb(220, 80, 37)"> | hasta 6 decimales 'EUR':'symbol-narrow':'1.4-6' -- </span>  <span style="color : rgb(232, 85, 23)">{{this.totalSells | currency:'EUR':'symbol-narrow':'1.4-6'}} </span> -->
+            
+            <!-- Texto original: <span style="color : aqua">{{this.nameUpper}}</span> Nombre con Pipe: <span style="color: yellowgreen;font-size :20px">{{this.nameUpper| lowercase}}</span> -->
+        </p-card>
+    </div>    
+</div>

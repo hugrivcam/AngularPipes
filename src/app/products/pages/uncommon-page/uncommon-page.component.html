@@ -1,0 +1,71 @@
+<pre>(<span style="color:rgba(155, 155,200,1)">{{miHora | date:'hh:mm:ss'}}</span>)</pre>
+<p-panel class = "p-2 border-round" header = "Pipes No comunes" [showHeader]="true" [style]="{'background-color': 'red'} ">
+  
+    <!-- <h1>Pipes básicos</h1> -->
+    <div class = "border-double p-2" style="background-color: rgb(36, 69, 1npm 53)">
+          <p>Pipes primeNG Fieldset, l18nSelectPipe, l18nPluralPipe...</p>
+    </div>
+  </p-panel>
+  
+  
+  <div class = "grid mt-2">
+      <div class = "col-12 md:col-6">
+          <p-fieldset legend = "i18nSelect Pipe" [toggleable]="true">
+            <p>
+              Saludos {{ this.name }}, es un placer 
+              <span *ngIf="this.gender === 'male'" style="color: cyan"> {{this.gender | i18nSelect:invitationMap}}</span> 
+              <span *ngIf="this.gender === 'female'" style="color: pink"> {{this.gender | i18nSelect:invitationMap}}</span> 
+              a nuestro evento lalala.
+           </p>
+           <p-button icon="pi pi-iconname" label="Cambiar Persona" (onClick)="changeClient()"></p-button>
+          </p-fieldset>
+          <!-- <p-card [style]="{'background-color': 'rgb(59, 105, 165)'}" header = "Números" subheader="________________">-->
+      </div>
+      <div class = "col-12 md:col-6">
+        <p-fieldset legend = "i18nPlural Pipe" [toggleable]="true">
+           <p>  
+              Actualmente <span style="color: rgb(0, 255, 13)">{{this.clients.length |i18nPlural:clientsMap}}</span> esperando.
+           </p>
+           <p-button icon="pi pi-iconName" label="Eliminar 1 cliente" (onClick)="deleteClient()"></p-button>
+        </p-fieldset>
+      </div>
+      <div class = "col-12 md:col-6">
+        <p-fieldset legend = "Slice Pipe" [toggleable]="true">
+          <b>Original</b>
+          <pre style="color:bisque">{{ clients }}</pre>
+          <b>slice:0:2</b>
+          <pre style="color:bisque">{{ clients | slice:0:2}}</pre>
+          <b>{{this.name}} | splice:5</b>
+          <pre style="color:bisque">{{ this.name | slice:5}}</pre>
+          <b>slice:0:-2 (Quita los 2 ultimos)</b>
+          <pre style="color:bisque">{{ clients| slice:0:-2 }}</pre>
+         
+        </p-fieldset>
+      </div>
+      <div class = "col-12 md:col-6">
+        <p-fieldset legend = "KeyValue Pipe" [toggleable]="true">
+            <ul title="objeto person en una lista">
+                objeto person en una lista
+                <!-- visualizo o uso mi objeto como un array -->
+                <li *ngFor="let item of person | keyvalue">
+                    <pre style="color:darkkhaki">{{item.key}} - {{item.value}} </pre>
+                </li>
+            </ul>
+        </p-fieldset>
+      </div> 
+      <div class = "col-12 md:col-6">
+        <p-fieldset legend = "Json Pipe" [toggleable]="true">
+          <b>Objeto person {{this.person}}</b>
+          <pre style="color:cornflowerblue"> {{this.person | json}} </pre>
+        </p-fieldset>
+      </div>      
+      <div class = "col-12 md:col-6">
+        <p-fieldset legend = "Async Pipe" [toggleable]="true">
+          <!-- el async lanza el observable de forma automatica y se cierra sólo sin necesidad de unsubscribe, seria como una instancia aparte -->
+          <pre>  {{myObservableTimer | async}}  </pre>          
+          
+          <pre *ngIf="!(promiseValue | async)">Resolviendo promesa </pre>
+          <pre>{{ promiseValue |async}}</pre>
+          
+        </p-fieldset>
+      </div>            

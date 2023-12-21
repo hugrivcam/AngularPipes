@@ -1,0 +1,64 @@
+<p-panel class = "p-2 border-round" header = "Pipes Basicos" [showHeader]="true" [style]="{'background-color': 'aqua'} ">
+  <!-- <h1>Pipes básicos</h1> -->
+  <div class = "border-double p-2">
+        <p>Pipes incluidos en Angular - Usualmente en el common module, usaremos primeflex para usar margenes y demás clases de css: instalación: npm install primeflex --save, añadir en el angular.json en styles "/node_modules/primeflex/primeflex.css"</p>
+        <p>las clases grid en lugar de p-grid, col-4 en lugar de p-col4 están definidas en primeflex y se usar de forma parecida al bootstrap, toda la doc esta en https://primeflex.org/gridsystem</p>
+  </div>
+</p-panel>
+
+<div class = "grid mt-2">
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(59, 64, 105)'}" header = "uppercase">
+            Texto original: <span style="color : aqua">{{this.nameLower}}</span> Nombre con Pipe: <span style="color: yellowgreen;font-size :20px">{{this.nameLower | uppercase}}</span>
+        </p-card>
+    </div>
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(49, 54, 105)'}" header = "lowercase">
+            Texto original: <span style="color : aqua">{{this.nameUpper}}</span> Nombre con Pipe: <span style="color: yellowgreen;font-size :20px">{{this.nameUpper| lowercase}}</span>
+        </p-card>
+    </div>
+    <div class = "col-4 md:col-6">
+        <p-card [style]="{'background-color': 'rgb(39, 44, 115)'}" header = tittlecase>
+            <!-- <ng-template pTemplate = "header">
+            </ng-template> -->
+            Texto original: <span style="color : aqua;">{{this.fullName}}</span> Nombre con Pipe: <span style="color: yellowgreen; font-size :20px">{{this.fullName | titlecase}}</span>
+            <!-- <ng-template pTemplate = "footer">
+                <button pButton>Card Button</button>
+            </ng-template> -->
+            
+        </p-card>
+    </div>
+    <div class = "col-4 md:col-6">
+        <!-- class="card flex justify-content-center" -->  <!--esto permitiria al p-card hacerse mas o menos ancho con su contenido centrado -->
+        <p-card [style]="{'background-color': 'rgb(49, 54, 105)'}" header = "datePipe">
+            <div class="grid">
+                <div class ="col-2">
+                    <i class="pi pi-calendar"></i>
+                    <p-calendar [(ngModel)]="miFecha" dateFormat ="dd/mm/yy"></p-calendar>
+                    <label for="pipeFechas"></label>
+                </div>
+                <div class="col-10">
+                    <ul id="pipeFechas">
+                        <li>Sin Pipe: <span style= "color:burlywood">{{miFecha}}</span></li>
+                        <li>Short date: <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "shortDate"}}</span></li>
+                        <li>dd/MM/YYYY: <span style= "color:rgb(110, 226, 87)">{{miFecha | date : "dd/MM/YYYY"}}</span></li>
+                        <li>dd 'de' MMMM 'del' YYYY: <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "dd 'de' MMMM 'del' YYYY"}}</span></li>
+                        <li>EEEE, dd 'de' MMMM 'del' YYYY: <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "EEEE, dd 'de' MMMM 'del' YYYY"}}</span></li>
+                        <!-- los idiomas que usemos serán necesarios cargarlos en el app.module.ts de nuestra aplicación, mirar ese archivo para ver como se hace-->
+                        <!--si queremos usar un idioma por defecto que no sea el ingles, lo configuraremos en app.module.ts en la sección providers con el siguiente codigo feo: {provide: LOCALE_ID,useValue:'es'}-->
+                        <li>EEEE, dd 'de' MMMM 'del' YYYY: : es <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "EEEE, dd 'de' MMMM 'del' YYYY":"":"es"}}</span></li> 
+                        <li>EEEE, dd 'de' MMMM 'del' YYYY: : fr <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "EEEE, dd 'de' MMMM 'del' YYYY":"":"fr"}}</span></li>
+                        <hr>
+                        <li>HH:mm:ss -> <span style= "color:rgb(76, 227, 121)">{{miFecha | date : "HH:mm:ss"}}</span></li>
+                        <li>hh:mm:ss : GMT+4 -> <span style= "color:rgb(226, 140, 87)">{{miFecha | date : "hh:mm:ss":"GMT+4"}}</span></li>
+                    </ul>
+                </div>                    
+            </div>                
+        </p-card>
+
+    </div>    
+
+</div>
+
+<h1 style="background-color: rgb(59, 64, 105);"></h1>
+<!-- <p-panel header = "Footer" [style]="{'background-color': 'aqua'}"></p-panel> -->

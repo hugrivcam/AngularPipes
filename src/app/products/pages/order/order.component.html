@@ -1,0 +1,57 @@
+<p-panel class = "p-2 border-round" header = "Pipes  CUSTOM" [showHeader]="true" [style]="{'background-color': 'white'} ">
+    <!-- <h1>Pipes básicos</h1> -->
+    <div class = "col-12 border-double p-2" style="background-color: rgb(86, 77, 107)">
+          <p>Custom PIPES</p>
+          <div class="grid col-12" style = "border: 3px solid #000">
+             <div class="col-6" style="border: 1px solid #000; padding: 10px;">
+                <div *ngIf="toogle===true;else toogleTemplate">
+                        ToogleCase  {{'OriGiNal'}} <span style="color:rgb(199, 225, 185)">  &nbsp;&nbsp;&nbsp; - - - -> &nbsp;&nbsp;&nbsp; {{'OriGiNal'|toogleCase:true}}</span> 
+                </div>
+             </div>
+             <div class="col-2" style="text-align:center; border: 1px solid #000; padding: 10px;">
+                 <p-button [style] = "{'margin-top': '0px','width':'100px','height':'40px','text-align':'center'}" label={{lbutton1}} (click)="toogleOnOff()"></p-button>                 
+             </div> 
+          </div>
+    </div>
+  </p-panel>
+
+<ng-template #toogleTemplate>
+    <!-- <div style="border: 1px solid #dd3d3d; padding: 10px; margin: 5px;"> -->
+        ToogleCase  {{'OriGiNal'}} <span style="color:rgb(227, 194, 238)">  &nbsp;&nbsp;&nbsp; - - - - - -> &nbsp;&nbsp;&nbsp; {{'OriGiNal'|toogleCase:false}}</span>
+    <!-- </div> -->
+</ng-template>
+
+
+<p-toolbar>
+    <!-- <div class="p-toolbar-group-start">
+        <p-button label="New" icon="pi pi-plus" class="mr-2"></p-button>
+        <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+        <i class="p-toolbar-separator pi pi-bars mr-2" style="vertical-align: middle"></i>
+        <p-splitButton label="Save" icon="pi pi-check" [model]="items" styleClass="p-button-warning"></p-splitButton>
+    </div> -->
+    <div class="p-toolbar-group-start">
+        <p-button label ="ToogleCase" icon="pi pi-search" class="mr-2" (onClick)="toogleOnOff()"></p-button>
+    </div>
+    <div class="p-toolbar-group-end">    
+        <p-button class="mr-2"  label="Por Nombre"  icon="pi pi-sort" styleClass="p-button-success" (onClick)="orderBy('name')"></p-button>
+        <p-button class="mr-2"  label ="Por volar " icon="pi pi-sort" styleClass="p-button-secondary" (onClick)="orderBy('canFly')"> </p-button>
+        <p-button class="mr-2"  label ="Por Color " icon="pi pi-sort" styleClass="p-button-danger" (onClick)="orderBy('color')"></p-button>
+    </div>
+</p-toolbar>
+
+<p-table [value]="heroes | sortBy:this.ordenarPor:this.ordenActual" styleClass="p-datatable-gridlines p-datatable-striped" [tableStyle]="{ 'min-width': '50rem','border': '3px solid #fff'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Vuela</th>
+            <th>Color</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-hero>
+        <tr>
+            <td>{{ hero.name }}</td>
+            <td>{{ hero.canFly | canFly  }}</td>
+            <td>{{ hero.color }}</td>
+        </tr>
+    </ng-template>
+</p-table>
